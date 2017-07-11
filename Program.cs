@@ -13,14 +13,18 @@ namespace transactionTuples
                 transactions.Add(("fork", 1.20, 4));
                 transactions.Add(("knife", 2.30, 5));
                 transactions.Add(("plate", 4.20, 7));
-            foreach((string product, double amount, int quantity)transaction in transactions){
-                Console.WriteLine($"{transaction.amount} {transaction.quantity}");
-               double totalAmount = transaction.amount * transaction.quantity;
-               Console.WriteLine($"totalAmount");
-            }
-                
-            // Console.WriteLine($"{product.Item1} {product.Item2} {product.Item3} ");
 
+                int totalQuantity = 0;
+                double revenue = 0;
+
+            foreach ((string product, double amount, int quantity) transaction in transactions){
+                totalQuantity +=transaction.quantity;
+                revenue += transaction.amount * totalQuantity; 
+            }
+            
+            // Console.WriteLine($"{product.Item1} {product.Item2} {product.Item3} ");
+                Console.WriteLine(totalQuantity);
+                Console.WriteLine($"{revenue:C}");
 
         }
     }
